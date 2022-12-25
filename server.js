@@ -7,11 +7,12 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
-mongoose.connect('mongodb://localhost:27017/sports',{useNewUrlParser:true, useUnifiedTopology:true}, function(){
-  try {
-    console.log('MongoDB Connected Successfully');
-  } catch (err) {
-    console.log(err);
+mongoose.connect('mongodb://localhost:27017/sports', {useNewUrlParser: true, useUnifiedTopology: true}, function(err){
+  if(err) {
+      console.log(err);
+  } 
+  else {
+     console.log('MongoDB Connected Successfully');
   }
    })
 
@@ -34,7 +35,7 @@ app.post('/deletegame', (req, res) => {
     res.send('This is the Home Page')
 })
 app.post('/getgame', (req, res) => {
-    res.send('This is the Home Page')
+    res.send('This is the Get Page')
 })
 app.post('/updategame', (req, res) => {
     res.send('This is the Home Page')
